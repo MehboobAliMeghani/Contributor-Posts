@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog - Contributor Posts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            color: white;
+            min-height: 120px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .post-header h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .post-body {
+            padding: 25px;
+        }
+
+        .post-meta {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+        }
+
+        .read-more:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: #f0f0f0;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .github-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">📝 Tech Blog</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#posts">Posts</a></li>
+                <li><a href="https://github.com/MehboobAliMeghani/Contributor-Posts" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero" id="home">
+            <h1>Welcome to Tech Blog</h1>
+            <p>Explore insightful articles about the latest trends, technologies, and best practices in web development and software engineering.</p>
+        </section>
+
+        <section id="posts">
+            <div class="posts-grid">
+                <!-- Blog Post 1 -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <h2>The Future of Web Development</h2>
+                    </div>
+                    <div class="post-body">
+                        <div class="post-meta">Published on July 3, 2024 | 8 min read</div>
+                        <p class="post-excerpt">
+                            Discover the trends and technologies shaping the future of web development. From AI integration to Web3, learn what's next in the industry.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Technology</span>
+                        </div>
+                        <a href="tech-blog-post.html" class="read-more">Read Full Post →</a>
+                    </div>
+                </div>
+
+                <!-- Placeholder for future posts -->
+                <div class="post-card">
+                    <div class="post-header">
+                        <h2>Coming Soon...</h2>
+                    </div>
+                    <div class="post-body">
+                        <div class="post-meta">Future post</div>
+                        <p class="post-excerpt">
+                            More exciting tech content is on the way! Stay tuned for articles about cloud computing, cybersecurity, and emerging technologies.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <p style="color: #999; margin-top: 20px; font-style: italic;">Check back soon...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Tech Blog - Contributor Posts. All rights reserved.</p>
+        <p>
+            <a href="https://github.com/MehboobAliMeghani" target="_blank" class="github-link">
+                Follow on GitHub
+            </a>
+        </p>
+    </footer>
+</body>
+</html>
